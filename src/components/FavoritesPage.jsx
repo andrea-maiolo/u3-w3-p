@@ -2,6 +2,7 @@ import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import Sidebar from "./Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteFromListAction } from "../redux/actions";
+import SidebarSmall from "./SidebarSmall";
 
 const FavoritesPage = () => {
   const favList = useSelector((state) => state.favorite.content);
@@ -10,6 +11,7 @@ const FavoritesPage = () => {
   return (
     <>
       <Sidebar />
+      <SidebarSmall />
 
       <Col xs={12} md={9} className="offset-md-3 mainPage">
         <Row>
