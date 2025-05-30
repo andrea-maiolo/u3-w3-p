@@ -24,29 +24,21 @@ const Sidebar = () => {
           <Navbar.Collapse id="#navbarNavAltMarkup">
             <Nav>
               <ul className="list-unstyled w-100">
-                <li>
-                  <Nav.Link href="/" className="d-flex align-items-center">
-                    <i className="bi bi-house-door-fill fst-normal">&nbsp; Home</i>
-                  </Nav.Link>
-                </li>
-                <li>
-                  <Nav.Link href="/favorites">
-                    <i className="bi bi-book-fill fst-normal">&nbsp; Your Library</i>
-                  </Nav.Link>
-                </li>
-                <li>
-                  <Link to="/favorites">fav</Link>
-                </li>
-                <li>
-                  <Nav.Link>
-                    <InputGroup className="mb-3">
-                      <Form.Control placeholder="Search" aria-label="search" aria-describedby="search" />
-                      <Button variant="outline-secondary" size="sm">
-                        GO
-                      </Button>
-                    </InputGroup>
-                  </Nav.Link>
-                </li>
+                <Link to="/" className="d-flex align-items-center nav-item nav-link">
+                  <i className="bi bi-house-door-fill fst-normal">&nbsp; Home</i>
+                </Link>
+                <Link to="/favorites" className="d-flex align-items-center nav-item nav-link">
+                  {" "}
+                  <i className="bi bi-book-fill fst-normal">&nbsp; Your Library</i>
+                </Link>
+                <Nav.Link>
+                  <InputGroup className="mb-3">
+                    <Form.Control placeholder="Search" aria-label="search" aria-describedby="search" />
+                    <Button variant="outline-secondary" size="sm">
+                      GO
+                    </Button>
+                  </InputGroup>
+                </Nav.Link>
               </ul>
             </Nav>
           </Navbar.Collapse>

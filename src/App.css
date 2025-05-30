@@ -182,3 +182,7 @@ ul {
   background-color: transparent;
   border: none;
 }
+
+.mainPage .custom-fav-img {
+  width: 100px;
+}

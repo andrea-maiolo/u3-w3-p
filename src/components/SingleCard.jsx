@@ -17,7 +17,8 @@ const SingleCard = ({ ele }) => {
   });
 
   const checkPayload = (payload) => {
-    if (currentFavList.some((ele) => ele._id === payload._id)) {
+    console.log(payload);
+    if (currentFavList.some((ele) => ele.id === payload.id)) {
       return;
     } else {
       dispatch(setToFavAction(payload));
