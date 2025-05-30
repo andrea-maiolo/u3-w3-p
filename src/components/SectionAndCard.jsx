@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Col, Image, Row } from "react-bootstrap";
+import SingleCard from "./SingleCard";
 
-const SectionAndCard = (props) => {
-  console.log(props);
+const SectionAndCard = ({ id, title, sectionId, artistName }) => {
   const [album, setAlbum] = useState([]);
 
   const fillMusicSection = async (artistName) => {
@@ -21,24 +21,20 @@ const SectionAndCard = (props) => {
   };
 
   useEffect(() => {
-    fillMusicSection(props.artistName);
+    fillMusicSection(artistName);
   }, []);
 
   return (
-    <Row id={props.id}>
-      <Col id={props.sectionId}>
-        <h2>{props.title}</h2>
-        <Row>
-          {album &&
-            album.slice(0, 4).map((ele) => {
-              return (
-                <Col key={ele.id}>
-                  <Image className="img-fluid" src={ele.album.cover} alt="track" />
-                  <p>Track: {ele.title}</p>
-                  <p>Artist: {ele.artist.name}</p>
-                </Col>
-              );
-            })}
+    <Row>
+      <Col xs={10} id={sectionId}>
+        <Row id={id}>
+          <h2>{title}</h2>
+          <Row className="imgLinks py-3" xs={1} sm={2} lg={3} xl={4}>
+            {album &&
+              album.slice(0, 4).map((ele) => {
+                return <SingleCard key={ele.id} ele={ele} />;
+              })}
+          </Row>
         </Row>
       </Col>
     </Row>

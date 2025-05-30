@@ -17,20 +17,6 @@ const Homepage = () => {
       <SectionAndCard id="rock" title="Rock Classics" sectionId="rockSection" artistName="queen" />
       <SectionAndCard id="pop" title="Pop Culture" sectionId="popSection" artistName="katyperry" />
       <SectionAndCard id="hiphop" title="HipHop" sectionId="hipHopSection" artistName="eminem" />
-      {/* {[
-        { id: "rock", title: "Rock Classics", sectionId: "rockSection" },
-        { id: "pop", title: "Pop Culture", sectionId: "popSection" },
-        { id: "hiphop", title: "HipHop", sectionId: "hipHopSection" },
-      ].map(({ id, title, sectionId }) => (
-        <Row key={id}>
-          <Col xs={10}>
-            <div id={id}>
-              <h2>{title}</h2>
-              <Row id={sectionId} className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3" />
-            </div>
-          </Col>
-        </Row>
-      ))} */}
     </Col>
   );
 };
