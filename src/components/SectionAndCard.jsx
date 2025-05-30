@@ -1,11 +1,14 @@
 import { useEffect } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Spinner } from "react-bootstrap";
 import SingleCard from "./SingleCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getAlbumsAction } from "../redux/actions";
 
 const SectionAndCard = ({ id, title, sectionId, artistName }) => {
   const forCorrectArray = id.toUpperCase();
+  const errorMessage = useSelector((state) => state.error.errorMessage);
+  const errorState = useSelector((state) => state.error.hasError);
+  const loadingState = useSelector((state) => state.album.isLoading);
 
   const dispatch = useDispatch();
 
@@ -22,17 +25,22 @@ const SectionAndCard = ({ id, title, sectionId, artistName }) => {
 
   return (
     <Row>
-      <Col xs={10} id={sectionId}>
-        <Row id={id}>
-          <h2>{title}</h2>
-          <Row className="imgLinks py-3" xs={1} sm={2} lg={3} xl={4}>
-            {album &&
-              album.slice(0, 4).map((ele) => {
-                return <SingleCard key={ele.id} ele={ele} />;
-              })}
+      {loadingState && <Spinner animation="border" role="status" variant="success"></Spinner>}
+      {errorState ? (
+        <h1 className="text-white mt-4">{errorMessage}</h1>
+      ) : (
+        <Col xs={10} id={sectionId}>
+          <Row id={id}>
+            <h2>{title}</h2>
+            <Row className="imgLinks py-3" xs={1} sm={2} lg={3} xl={4}>
+              {album &&
+                album.slice(0, 4).map((ele) => {
+                  return <SingleCard key={ele.id} ele={ele} />;
+                })}
+            </Row>
           </Row>
-        </Row>
-      </Col>
+        </Col>
+      )}
     </Row>
   );
 };

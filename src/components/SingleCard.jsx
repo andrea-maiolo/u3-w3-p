@@ -25,8 +25,11 @@ const SingleCard = ({ ele }) => {
     }
   };
 
-  const chageIcon = () => {
+  const chageIcon = (curretnEle) => {
     // check state global
+    // if (currentFavList.some((ele) => ele.id === curretnEle.id)) {
+    //   return;
+    // }
     setIcon(!icon);
   };
 
@@ -50,7 +53,7 @@ const SingleCard = ({ ele }) => {
           variant="outline-primary"
           className="custom-btn"
           onClick={() => {
-            checkPayload(ele), chageIcon();
+            checkPayload(ele), chageIcon(ele);
           }}
         >
           {icon ? <i className="bi bi-heart-fill"></i> : <i className="bi bi-heart"></i>}
