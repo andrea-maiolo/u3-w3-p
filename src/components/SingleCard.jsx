@@ -1,12 +1,32 @@
-import { Col, Image } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { setSongSelected } from "../redux/actions";
+import { Button, Col, Image } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { setSongSelected, setToFavAction } from "../redux/actions";
+import { useState } from "react";
 
 const SingleCard = ({ ele }) => {
   const dispatch = useDispatch();
 
-  const handleClick = (currentAlbum) => {
+  const handleClickSong = (currentAlbum) => {
     dispatch(setSongSelected(currentAlbum));
+  };
+
+  const [icon, setIcon] = useState(false);
+
+  const currentFavList = useSelector((state) => {
+    return state.favorite.content;
+  });
+
+  const checkPayload = (payload) => {
+    if (currentFavList.some((ele) => ele._id === payload._id)) {
+      return;
+    } else {
+      dispatch(setToFavAction(payload));
+    }
+  };
+
+  const chageIcon = () => {
+    // check state global
+    setIcon(!icon);
   };
 
   return (
@@ -16,13 +36,25 @@ const SingleCard = ({ ele }) => {
         src={ele.album.cover_medium}
         alt="track"
         onClick={() => {
-          handleClick(ele);
+          handleClickSong(ele);
         }}
       />
-      <p>
-        Track: {ele.title} <br />
-        Artist: {ele.artist.name}
-      </p>
+      <div className="d-flex">
+        <p>
+          Track: {ele.title} <br />
+          Artist: {ele.artist.name}
+        </p>
+        <Button
+          size="sm"
+          variant="outline-primary"
+          className="custom-btn"
+          onClick={() => {
+            checkPayload(ele), chageIcon();
+          }}
+        >
+          {icon ? <i className="bi bi-heart-fill"></i> : <i className="bi bi-heart"></i>}
+        </Button>
+      </div>
     </Col>
   );
 };

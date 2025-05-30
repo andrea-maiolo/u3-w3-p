@@ -170,3 +170,15 @@ ul {
 .mainPage img {
   width: 200px;
 }
+
+.custom-btn {
+  background-color: transparent;
+  border: none;
+}
+
+.custom-btn:focus,
+.custom-btn:hover,
+.custom-btn:active {
+  background-color: transparent;
+  border: none;
+}

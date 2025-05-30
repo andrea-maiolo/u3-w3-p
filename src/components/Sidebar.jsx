@@ -1,5 +1,6 @@
 import { Navbar, Nav, Container, Button, FormControl, InputGroup, Collapse, Col, NavbarToggle, Form } from "react-bootstrap";
 import logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -29,9 +30,12 @@ const Sidebar = () => {
                   </Nav.Link>
                 </li>
                 <li>
-                  <Nav.Link href="/library">
+                  <Nav.Link href="/favorites">
                     <i className="bi bi-book-fill fst-normal">&nbsp; Your Library</i>
                   </Nav.Link>
+                </li>
+                <li>
+                  <Link to="/favorites">fav</Link>
                 </li>
                 <li>
                   <Nav.Link>

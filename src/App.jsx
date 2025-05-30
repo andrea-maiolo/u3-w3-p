@@ -1,20 +1,16 @@
-import { Container, Row } from "react-bootstrap";
 import "./App.css";
-import Sidebar from "./components/Sidebar";
-import Homepage from "./components/Homepage";
-import Player from "./components/Player";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MainComponentHome from "./components/MainComponentHome";
+import FavoritesPage from "./components/FavoritesPage";
 
 function App() {
   return (
-    <>
-      <Container fluid>
-        <Row>
-          <Sidebar />
-          <Homepage />
-          <Player />
-        </Row>
-      </Container>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainComponentHome />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
