@@ -1,9 +1,18 @@
 import { useEffect, useState } from "react";
-import { Col, Image, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import SingleCard from "./SingleCard";
+import { useDispatch, useSelector } from "react-redux";
+import { getAlbumsAction } from "../redux/actions";
 
 const SectionAndCard = ({ id, title, sectionId, artistName }) => {
-  const [album, setAlbum] = useState([]);
+  // const [album, setAlbum] = useState([]);
+  const forCorrectArray = id.toUpperCase();
+
+  const dispatch = useDispatch();
+
+  const album = useSelector((state) => {
+    return state.album[id];
+  });
 
   const fillMusicSection = async (artistName) => {
     try {
@@ -21,8 +30,11 @@ const SectionAndCard = ({ id, title, sectionId, artistName }) => {
   };
 
   useEffect(() => {
-    fillMusicSection(artistName);
+    // fillMusicSection(artistName);
+    dispatch(getAlbumsAction("https://striveschool-api.herokuapp.com/api/deezer/search?q=" + artistName, forCorrectArray));
   }, []);
+
+  console.log(album);
 
   return (
     <Row>

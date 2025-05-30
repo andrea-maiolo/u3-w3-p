@@ -1,6 +1,11 @@
-export const SET_ALBUM_ARRAY = "SET_ALBUM_ARRAY";
+export const SET_ALBUM_ARRAY_ROCK = "SET_ALBUM_ARRAY_ROCK";
+export const SET_ALBUM_ARRAY_POP = "SET_ALBUM_ARRAY_POP";
+export const SET_ALBUM_ARRAY_HIPHOP = "SET_ALBUM_ARRAY_HIPHOP";
+export const SET_CURRENTLY_PLAYING = "SET_CURRENTLY_PLAYING";
 
-export const getAlbumsAction = (endpoint) => {
+export const setSongSelected = (obj) => ({ type: SET_CURRENTLY_PLAYING, payload: obj });
+
+export const getAlbumsAction = (endpoint, correctArray) => {
   return async (dispatch, getState) => {
     // per loading
     // dispatch({ type: SET_BOOKS_LOADING_ON });
@@ -9,7 +14,7 @@ export const getAlbumsAction = (endpoint) => {
       const response = await fetch(endpoint);
       if (response.ok) {
         const data = await response.json();
-        dispatch({ type: SET_ALBUM_ARRAY, payload: data.data });
+        dispatch({ type: `SET_ALBUM_ARRAY_${correctArray}`, payload: data.data });
       } else {
         throw new Error("Error in fetching songs");
       }
