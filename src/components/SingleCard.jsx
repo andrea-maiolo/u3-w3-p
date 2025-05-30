@@ -17,7 +17,6 @@ const SingleCard = ({ ele }) => {
   });
 
   const checkPayload = (payload) => {
-    console.log(payload);
     if (currentFavList.some((ele) => ele.id === payload.id)) {
       return;
     } else {

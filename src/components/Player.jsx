@@ -7,21 +7,20 @@ import next from "../assets/playerbuttons/next.png";
 import { useSelector } from "react-redux";
 
 const Player = () => {
-  const test = useSelector((state) => {
+  const selectedSong = useSelector((state) => {
     return state.song.currentlyPlaying;
   });
-  console.log(test);
   return (
     <Container fluid className="fixed-bottom bg-container pt-1">
       <Row className="h-100">
         <Col lg={10} className="offset-lg-2">
           <Row className="h-100 justify-content-center align-items-center">
-            {test && (
+            {selectedSong && (
               <Col className="d-flex text-white">
-                <Image src={test.album.cover_small} className="img-fluid ms-3" />
+                <Image src={selectedSong.album.cover_small} className="img-fluid ms-3" />
                 <p className="ms-2">
-                  Track: {test.title} <br />
-                  Artist: {test.artist.name}
+                  Track: {selectedSong.title} <br />
+                  Artist: {selectedSong.artist.name}
                 </p>
               </Col>
             )}

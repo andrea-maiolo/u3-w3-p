@@ -21,8 +21,6 @@ const SectionAndCard = ({ id, title, sectionId, artistName }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(album);
-
   return (
     <Row>
       {loadingState && <Spinner animation="border" role="status" variant="success"></Spinner>}
