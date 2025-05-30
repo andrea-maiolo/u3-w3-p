@@ -26,14 +26,15 @@ const SingleCard = ({ ele }) => {
 
   const chageIcon = (curretnEle) => {
     // check state global
-    // if (currentFavList.some((ele) => ele.id === curretnEle.id)) {
+    // if (!currentFavList.some((ele) => ele.id === curretnEle.id)) {
+    setIcon(!icon);
+    // } else {
     //   return;
     // }
-    setIcon(!icon);
   };
 
   return (
-    <Col key={ele.id} className="text-center">
+    <Col className="text-center">
       <Image
         className="img-fluid"
         src={ele.album.cover_medium}
